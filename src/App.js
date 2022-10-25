@@ -1,32 +1,26 @@
-import {useState, useEffect} from 'react'
-import Posts from './components/Posts'
-import Loading from './components/Loading'
+import {useState} from 'react'
 import Title from './components/Title'
+import InputForm from './components/InputForm'
+import TodoList from './components/TodoList'
+
+
+
 
 const App = () => {
 
-    const [posts, setPosts] = useState([])
+    const [todos, setTodos] = useState(['My first todo'])
 
-
-    useEffect(() => {
-        const getPosts = async () => {
-            const data = await fetch('https://jsonplaceholder.typicode.com/posts')
-            const json = await data.json()
-            
-            setPosts(json)
-        }
-
-        getPosts()
-    }, [])
-
-    return (
-        <>
-            <Title />
-            {posts.length > 0 ? <Posts posts={posts} id="list" /> : <Loading />}
-        </>
-    )
-
+    const createTodo = (text) => {
+        setTodos([text, ...todos])
+    }
     
+    return (
+        <div className="container">
+            <Title />
+            <InputForm createTodo={createTodo}/>
+            <TodoList todos={todos} />
+        </div>
+    )
 }
 
 export default App

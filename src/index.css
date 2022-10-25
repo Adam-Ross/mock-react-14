@@ -9,6 +9,22 @@
     background: #f4f4f4;
 }
 
+.btn {
+    margin: 1rem 1rem 0 0;
+    padding: 1rem;
+    transition: background .5s ease;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background: gray;
+}
+
+.container {
+    padding: 1rem;
+    margin: 1rem;
+}
+
 .listItem {
     margin: 2rem;
     border: 3px solid aqua;
