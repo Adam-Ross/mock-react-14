@@ -1,5 +1,10 @@
 const TodoItem = ({todo}) => {
-    return <h1>{todo}</h1>
+    return (
+        <>
+            <h1>{todo.title}</h1>
+            {todo.completed && <p>Done</p>}
+        </>
+    )
 }
 
 export default TodoItem

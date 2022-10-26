@@ -1,7 +1,7 @@
 import {useState} from 'react'
 
-const InputForm = ({createTodo}) => {
-
+const TodoInput = ({createTodo}) => {
+    
     const [text, setText] = useState('')
 
     const handleChange = (e) => {
@@ -14,12 +14,12 @@ const InputForm = ({createTodo}) => {
         setText('')
     }
 
-    return (
+    return(
         <form onSubmit={handleSubmit}>
             <input type="text" value={text} onChange={handleChange}/>
-            <input type="submit"/>
+            <input type="submit" />
         </form>
     )
 }
 
-export default InputForm
+export default TodoInput

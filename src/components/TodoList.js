@@ -1,7 +1,7 @@
-import TodoItem from './TodoItem.js'
+import TodoItem from './TodoItem'
 
 const TodoList = ({todos}) => {
-    return todos.map((todo, index) => <TodoItem todo={todo} key={index} />)
+    return todos.map((todo) => <TodoItem todo={todo} key={todo.id}/>)
 }
 
 export default TodoList

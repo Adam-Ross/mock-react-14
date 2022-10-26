@@ -1,24 +1,47 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
+
 import Title from './components/Title'
-import InputForm from './components/InputForm'
+import TodoInput from './components/TodoInput'
 import TodoList from './components/TodoList'
-
-
-
 
 const App = () => {
 
-    const [todos, setTodos] = useState(['My first todo'])
+    useEffect(() => {
+        const getTodos = async () => {
+            try {
+                const data = await fetch('https://jsonplaceholder.typicode.com/todos')
+                const responseTodos = await data.json()
+                console.log(responseTodos)
+                setTodos([...todos, ...responseTodos])
+                
+                
+            } catch (error) {
+                console.log(error.message)
+            }
+        }
+
+        getTodos()
+    }, [])
+
+    
+    const [todos, setTodos] = useState([])
 
     const createTodo = (text) => {
-        setTodos([text, ...todos])
+        const newTodo = {
+            title: text,
+            id: todos.length + 1,
+            completed: true
+        }
+
+        setTodos([newTodo, ...todos])
     }
-    
+
+
     return (
         <div className="container">
             <Title />
-            <InputForm createTodo={createTodo}/>
-            <TodoList todos={todos} />
+            <TodoInput createTodo={createTodo}/>
+            <TodoList todos={todos}/>
         </div>
     )
 }

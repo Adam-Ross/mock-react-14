@@ -1,5 +1,7 @@
 const Title = () => {
-    return <h1>Our Todo APP</h1>
+    return (
+        <h1 id="title">My Todo App!</h1>
+    )
 }
 
 export default Title
